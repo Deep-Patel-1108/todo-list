@@ -31,17 +31,18 @@ const ListTodo = () => {
 
   return (
     <div>
-      {display === "row" &&
-        todos
-          .filter((t) => t.status === "todo")
-          .map((todo) => (
-            <TodoRow
-              todo={todo}
-              key={todo.id}
-              handleChangeSelectedTodo={handleChangeSelectedTodo}
-              handleImportant={handleImportant}
-            />
-          ))}
+      {!display ||
+        (display === "row" &&
+          todos
+            .filter((t) => t.status === "todo")
+            .map((todo) => (
+              <TodoRow
+                todo={todo}
+                key={todo.id}
+                handleChangeSelectedTodo={handleChangeSelectedTodo}
+                handleImportant={handleImportant}
+              />
+            )))}
       <div
         className={classNames(
           "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2",
